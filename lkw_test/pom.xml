@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.2.7.BUILD-SNAPSHOT</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.example</groupId>
+	<artifactId>lkw_test</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>lkw_test</name>
+	<description>lkw_test project for Spring Boot</description>
+
+	<properties>
+		<java.version>1.8</java.version>
+		<maven.test.skip>true</maven.test.skip>
+	</properties>
+
+	<dependencies>
+		<!-- 스프링 부트 어플리케이션 실행시에 내부적으로 Tomcat, Netty, Undertow 웹어플리케이션서버(WAS)를 포함해서(embed) 실행이 된다.
+		Web 모듈을 사용하면 REST API 를 쉽게 구현 할 수 있다. -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.junit.vintage</groupId>
+					<artifactId>junit-vintage-engine</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		
+		<dependency>
+	        <groupId>org.springframework.boot</groupId>
+	        <artifactId>spring-boot-starter-web</artifactId>
+	    </dependency>
+	
+	    <!-- jpa -->
+	    <!-- JPA(Java Persistence API) 는 자바 응용프로그램에서 관계형 데이터베이스의 관리를 표현하는 자바 API이다.
+		자바 모델 클래스에 @Entity 어노테이션을 달면 DB테이블 엔티티로 맵핑되고, 자바 레파지토리 인터페이스에 @Repository 어노테이션을 달면 DB테이블 CRUD 명령을 자동으로 생성해준다. -->
+	    <dependency>
+	        <groupId>org.springframework.boot</groupId>
+	        <artifactId>spring-boot-starter-data-jpa</artifactId>
+	    </dependency>
+	    
+	    <!-- h2 database -->
+	   	<!-- 인메모리(In-memory) 데이타베이스로서 스프링 부트 어플리케이션이 실행시에 내부적으로 포함되어 자동으로 실행된다.
+		스프링 부트 내부에 포함되어 자동 실행되므로, 따로 데이타베이스 연결 설정이 필요없다.
+		인메모리 데이타베이스이기 때문에 모든 데이타는 휘발성이다. 서버의 임시데이타(테스트용 데이타베이스, REST API 결과데이타 캐쉬, 사용자 로그인 세션 값)를 저장하는데 용이하다. -->
+	    <dependency>
+	        <groupId>com.h2database</groupId>
+	        <artifactId>h2</artifactId>
+	    </dependency>
+
+	    <dependency>
+	        <groupId>org.apache.tomcat</groupId>
+	        <artifactId>tomcat-jasper</artifactId>
+	        <version>8.5.30</version>
+	    </dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+		          <skipTests>true</skipTests>
+		        </configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<repositories>
+		<repository>
+			<id>spring-milestones</id>
+			<name>Spring Milestones</name>
+			<url>https://repo.spring.io/milestone</url>
+		</repository>
+		<repository>
+			<id>spring-snapshots</id>
+			<name>Spring Snapshots</name>
+			<url>https://repo.spring.io/snapshot</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>spring-milestones</id>
+			<name>Spring Milestones</name>
+			<url>https://repo.spring.io/milestone</url>
+		</pluginRepository>
+		<pluginRepository>
+			<id>spring-snapshots</id>
+			<name>Spring Snapshots</name>
+			<url>https://repo.spring.io/snapshot</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
+
+</project>
